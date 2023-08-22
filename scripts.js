@@ -18,7 +18,6 @@ function getPlayerSelection() {
         return t
     }
     else {
-        alert('Wrong input')
         return 'nothing'
     }
 }
@@ -27,7 +26,7 @@ function playRound(pl,pc) {
     console.log('Player chose : "' + pl)
     console.log('Computer chose : "' + pc)
     if (pc === pl) {
-        return 'Its a tie!'
+        return 'Round ended in a tie!'
     } else if (pc === 'rock' && pl === 'paper' ) {
         return 'Player has won!'
     } else if (pc === 'rock' && pl === 'scissors' ) {
@@ -41,10 +40,31 @@ function playRound(pl,pc) {
     } else if (pc === 'scissors' && pl === 'rock' ) {
         return 'Player has won!'
     } else {
-        return 'Game did not happen'
+        return 'Round did not happen'
     }
 } 
 
-const playerSelection = getPlayerSelection();
-const computerSelection = getComputerChoice();
-console.log(playRound(playerSelection, computerSelection))
+function playGame(){
+    console.log('Game starts!')
+    let playerScore = 0, computerScore = 0
+    for (let i = 0; i < 5; i++) {
+        console.log('Current score : Player', playerScore, computerScore,' Computer')
+        winner = playRound(getPlayerSelection(),getComputerChoice())
+        console.log(winner)
+        if (winner === 'Player has won!'){
+            playerScore += 1
+        } else if (winner === 'Computer has won!'){
+            computerScore += 1
+        }
+    }
+    console.log('Final score :', playerScore, computerScore)
+    if (playerScore > computerScore) {
+        console.log('Player has won the game!')
+    } else if (computerScore > playerScore) {
+        console.log('Computer has won the game!')
+    } else {
+        console.log('Game has ended in a tie!')
+    }
+}
+
+playGame()

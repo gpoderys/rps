@@ -107,7 +107,7 @@ buttonPress.forEach(button => {
             newDiv.textContent = `Game Over. ${winner}, has won.`
             bodySelect.appendChild(newDiv)
             toggle =1
-            score.classList.remove('score')
+            
         } 
     })
 })
